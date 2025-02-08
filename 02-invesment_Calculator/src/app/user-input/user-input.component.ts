@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { userInputModel } from './user-input.model';
+import { investmentService } from '../investment-result/investment-result.service';
 
 @Component({
   selector: 'app-user-input',
@@ -10,12 +12,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserInputComponent {
 
-  inital_Invesment! : number;
-  annual_Investment! : number;
-  expected_Return! : number;
-  duration! : number;
+  private investmentService = inject(investmentService);
+  inital_Invesment = 0;
+  annual_Investment = 0;
+  expected_Return = 0;
+  duration = 0;
 
   userInputSubmitted(){
-    
+    this.investmentService.calculateInvestmentResults({
+      initialInvestment : this.inital_Invesment,
+      annualInvestment : this.annual_Investment,
+      expectedReturn : this.expected_Return,
+      duration : this.duration
+    });
   }
 }
