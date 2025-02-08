@@ -1,3 +1,6 @@
+@if(!results){
+<p>please enter investment data</p>
+}@else{
 <table>
   <thead>
     <th>Year</th>
@@ -6,5 +9,17 @@
     <th>Total Interest</th>
     <th>Invested Capital</th>
   </thead>
-  <tbody></tbody>
+  <tbody>
+    @for (result of results; track $index) {
+    <tr>
+      <td>{{ result.year }}</td>
+      <td>{{ result.valueEndOfYear }}</td>
+      <td>{{ result.interest }}</td>
+      <td>{{ result.totalInterest }}</td>
+      <td>{{ result.totalAmountInvested }}</td>
+    </tr>
+    }
+  </tbody>
 </table>
+
+}

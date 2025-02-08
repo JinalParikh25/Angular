@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { userInputModel } from '../user-input/user-input.model';
+import { investmentService } from './investment-result.service';
 
 @Component({
   selector: 'app-investment-result',
@@ -8,28 +10,12 @@ import { Component } from '@angular/core';
   styleUrl: './investment-result.component.css'
 })
 export class InvestmentResultComponent {
+  
 
-  // function calculateInvestmentResults() {
-  //   const annualData = [];
-  //   let investmentValue = initialInvestment;
-  
-  //   for (let i = 0; i < duration; i++) {
-  //     const year = i + 1;
-  //     const interestEarnedInYear = investmentValue * (expectedReturn / 100);
-  //     investmentValue += interestEarnedInYear + annualInvestment;
-  //     const totalInterest =
-  //       investmentValue - annualInvestment * year - initialInvestment;
-  //     annualData.push({
-  //       year: year,
-  //       interest: interestEarnedInYear,
-  //       valueEndOfYear: investmentValue,
-  //       annualInvestment: annualInvestment,
-  //       totalInterest: totalInterest,
-  //       totalAmountInvested: initialInvestment + annualInvestment * year,
-  //     });
-  //   }
-  
-  //   return annualData;
-  // }
+  private investmentResultService = inject(investmentService)
+
+  get results() {
+    return this.investmentResultService.resultData;
+  }
   
 }
