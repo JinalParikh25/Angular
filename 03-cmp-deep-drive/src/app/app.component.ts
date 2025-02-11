@@ -1,41 +1,34 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
+import { SupportTicketsComponent } from './dashboard/support-tickets/support-tickets.component';
+import { TrafficComponent } from './dashboard/traffic/traffic.component';
+import { ServerStatusComponent } from './dashboard/server-status/server-status.component';
+import { DashboardItemsComponent } from "./dashboard/dashboard-items/dashboard-items.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [HeaderComponent,DashboardItemsComponent, SupportTicketsComponent, TrafficComponent, ServerStatusComponent, DashboardItemsComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  dummyTrafficData = [
-    {
-      id: 'd1',
-      value: 433,
+
+  get dashboardItems() { 
+    return [ {
+      img : { src: 'status.png', alt: 'A signal symbol' },
+      title : "Server Status",
+      componentName : "app-server-status"
     },
     {
-      id: 'd2',
-      value: 260,
+      img : { src: 'globe.png', alt: 'A globe' },
+      title : "Traffic",
+      componentName : "app-traffic"
     },
     {
-      id: 'd3',
-      value: 290,
-    },
-    {
-      id: 'd4',
-      value: 410,
-    },
-    {
-      id: 'd5',
-      value: 397,
-    },
-    {
-      id: 'd6',
-      value: 488,
-    },
-    {
-      id: 'd47',
-      value: 589,
-    },
-  ];
-  maxTraffic = Math.max(...this.dummyTrafficData.map((data) => data.value));
-  currentStatus = 'online';
+      img : { src: 'list.png', alt: 'A list of items' },
+      title : "Support Tickets",
+      componentName : "app-support-tickets"
+    }
+  ]
+  }
 }
