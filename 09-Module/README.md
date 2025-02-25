@@ -25,3 +25,34 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## What is Module?
+
+module meaning group of components. we can create angular application with module base (group of component) and standalone components
+
+## to work with module base application we need to add this line in main.ts file for make app module as a root module.
+
+import { platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+and in app.module.ts file we need to tell angular with component work as a root component for that we need to add bootstrap:[AppComponent] in module declaration part
+@NgModule({
+
+bootstrap:[AppComponent],
+
+})
+
+## @NgModule({
+
+## declarations:[AppComponent], - non-standalone component
+
+## bootstrap:[AppComponent], - root component
+
+## imports : [BrowserModule,HeaderComponent, UserComponent, TasksComponent] - standalone component and other Module
+
+## })
+
+## BrowserModule :
+
+to run module base application correctly need to import BrowserModule and it also have another feature like pipe.
