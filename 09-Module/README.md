@@ -56,3 +56,23 @@ bootstrap:[AppComponent],
 ## BrowserModule :
 
 to run module base application correctly need to import BrowserModule and it also have another feature like pipe.
+
+## Module means group of components so for example tasksComponent's child components [taskcomponent, newTaskComponent] so we can create one tasksModule and in that tasksModule we can in Module declaration we can use tasksComponent, taskComponent, newTaskComponent
+
+@NgModule({
+declarations : [TasksComponent, TaskComponent, NewTaskComponent],
+exports : [TasksComponent]
+})
+export class TasksModule{
+
+}
+
+declarations : [TasksComponent, TaskComponent, NewTaskComponent], - child of tasksComponent which are standalone = false
+exports : [TasksComponent] - from the 3 component only tasksComponent use in appcomponent so we need to export only TasksComponent not anyOther component
+
+and at last we have this update in app.module.ts file
+@NgModule({
+declarations:[AppComponent,HeaderComponent,UserComponent],
+bootstrap:[AppComponent],
+imports : [BrowserModule, FormsModule,SharedModule, TasksModule]
+})
